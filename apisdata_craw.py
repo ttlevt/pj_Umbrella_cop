@@ -69,13 +69,34 @@ def apis_Getplace(place_name):
     rain = [vali[32],vali[53],vali[73]]
     rain2 = []
     reh = [vali[23],vali[33],vali[43],vali[54],vali[64],vali[74]]
-    # 강수량이 6시간마다누적되므로 실제값은 4개뿐이라서 8개로 늘리도록함
+    # 강수량이 6시간마다누적되므로 실제값은 4개뿐이라서 8개로 늘리도록함-> 패치 6개로 줄임
     for i in rain:
         rain2.append(int(i)/2)
         rain2.append(int(i)/2)
-    print(baseurl+serv)
+
+    # print(baseurl+serv)
     print('cloudy:', cli, 'rain:', rain2, 'reh:', reh)
+
+
+    tli= [cli]+[rain2]+[reh]
+
+
+    col = ['cloudy', 'mm', 'percent']
+    #
+    # apis_today = pd.DataFrame.from_records(ttl, columns=col)
+    # print(apis_today)
+    apis_today = pd.DataFrame.from_records(tli)
+    print(apis_today.stack())
+    print(apis_today)
+#클라우드  mm percent
+
+
+
+
+
     return('cloudy:', cli, 'rain:', rain2, 'reh:', reh)
+
+
 
 # 전운량 시작 4번째 15 25 36 45 57 66 77
 # 강수량  12 33 54 74
