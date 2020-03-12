@@ -4,8 +4,14 @@ from bs4 import BeautifulSoup
 
 # dict 이름만 원하는걸로 바꿔주면 되니까 천천히 하자 금방할수있음
 def getplace(place_name):
+
+    if len(place_name) > 4:
+        place_name = place_name[0:2]
+    if place_name[-1] == '시':
+        place_name = place_name[0:-1]
+
     response = requests.get("https://www.weatheri.co.kr/forecast/forecast01.php?rid=0202040103&k=1&a_name=%EA%B0%80%ED%8F%89")
-    # print(("https://www.weatheri.co.kr/forecast/forecast01.php?&k=1&a_name="+str(place_name)+""))
+
     assert response.status_code is 200
     dom = BeautifulSoup(response.content, "html.parser", from_encoding='utf-8')
 
@@ -34,11 +40,11 @@ def getplace(place_name):
         dom = BeautifulSoup(response.content, "html.parser", from_encoding='utf-8')
     td = dom.select('td')
     # 해당페이지의 td를 선택자로 전부가져온다
-    td_pic = td[332:340]
+    td_pic = td[334:340]
     # 운량을 이미지로 설정되있는걸 확인 후 이미지는 태그와 이미지파일명을 가져올것이고
-    td_rain = td[350:358]
+    td_rain = td[352:358]
     # 강수량은 태그와 값을 가져올것임
-    td_hum = td[368:376]
+    td_hum = td[370:376]
     # 습도역시 태그와 값을 가져옴
     #전운량 332~340
     
@@ -72,9 +78,9 @@ def getplace(place_name):
     print('전운량:', pic_li)  # 0 = 맑음 1= 구름있음
     print('강수량 :', rain_li) # 0 = 강수량없음
     print('습도 :', hum_li)
+    return(pic_li,rain_li,hum_li)
 
-
-getplace('동두')
+getplace('울산광역시')
 
 
 

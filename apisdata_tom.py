@@ -2,9 +2,10 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import numpy as np
 
 
-def apis_Getplace(place_name):
+def apis_Getplace_tom(place_name):
     df = pd.read_csv('./apis/xy_data.csv', encoding='cp949')
     xy_li = []
 
@@ -44,9 +45,9 @@ def apis_Getplace(place_name):
 
     baseurl = 'http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?'
     serv = 'serviceKey=oHgZfD9oeFM8cre%2BCD7dYf19ZdDFQMXdgk1wHMs8jmBvzvNvnimHQUQuAlWVD3dS1l78I1mHil41Z7ooft13mQ%3D%3D&'\
-           'pageNo=1&numOfRows=80&dataType=XML&base_date={}&base_time=2330&{}'.format(today, xy)
+           'pageNo=2&numOfRows=80&dataType=XML&base_date={}&base_time=2330&{}'.format(today, xy)
 
-
+    print(baseurl+serv)
     response = requests.get(baseurl+serv)
 
     # print(baseurl+serv)
@@ -59,28 +60,28 @@ def apis_Getplace(place_name):
         vali.append(value.text)
     # print(baseurl+serv)
     # print(vali)
-    cloudy = [vali[24],vali[35],vali[44],vali[56],vali[65],vali[76]]
+    cloudy = [vali[26],vali[37],vali[46],vali[58],vali[67],vali[78]]
     cli = []
     for i in cloudy:
         if i == '1':
             cli.append(0)
         else :
             cli.append(1)
-    rain = [vali[32],vali[53],vali[73]]
+    rain = [vali[34],vali[55],vali[75]]
     rain2 = []
-    reh = [vali[23],vali[33],vali[43],vali[54],vali[64],vali[74]]
+    reh = [vali[25],vali[35],vali[45],vali[56],vali[66],vali[76]]
     # 강수량이 6시간마다누적되므로 실제값은 4개뿐이라서 8개로 늘리도록함
     for i in rain:
         rain2.append(int(i)/2)
         rain2.append(int(i)/2)
-    print(baseurl+serv)
-    print('cloudy:', cli, 'rain:', rain2, 'reh:', reh)
-    return('cloudy:', cli, 'rain:', rain2, 'reh:', reh)
 
-# 전운량 시작 4번째 15 25 36 45 57 66 77
-# 강수량  12 33 54 74
-# 습도 시작 3 13 24 34 44 55 65 75
-apis_Getplace('울산광역시')
+    print('cloudy:', cli, 'rain:', rain2, 'reh:', reh)
+    return( cli, rain2, reh)
+
+# 전운량 시작 6 17 27 38 47 59 68 79
+# 강수량 14 35 56 76
+# 습도 시작 5 15 26 36 46 57 67 77
+apis_Getplace_tom('울산광역시')
 
 
 #     base_time=2300 # base_time은 작일 2300 or 2330 부터 조회해야 3시데이터부터쭉나온다

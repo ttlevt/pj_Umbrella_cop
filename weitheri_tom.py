@@ -3,8 +3,12 @@ import requests
 from bs4 import BeautifulSoup
 
 
-# def getplace(place_name) :
+
 def getplace_tom(place_name):
+    if len(place_name) > 4:
+        place_name = place_name[0:2]
+    if place_name[-1] == '시':
+        place_name = place_name[0:-1]
     response = requests.get(
         "https://www.weatheri.co.kr/forecast/forecast01.php?rid=0202040103&k=1&a_name=%EA%B0%80%ED%8F%89")
     # print(("https://www.weatheri.co.kr/forecast/forecast01.php?&k=1&a_name="+str(place_name)+""))
@@ -17,7 +21,7 @@ def getplace_tom(place_name):
     for i in a_tag2:
         name.append(i.text)
     # tag2 = a태그의 88~260까지 즉 모든지역들의 이름이 적힌 링크들을 name리스트에 담음
-
+    print(name)
     li = []
     for i in a_tag2:
         tdx = str(i).split('?')[1]
@@ -33,14 +37,15 @@ def getplace_tom(place_name):
         response = requests.get("https://www.weatheri.co.kr/forecast/forecast01.php?" + str(loc.pop(place_name)) + '')
         assert response.status_code is 200
         dom = BeautifulSoup(response.content, "html.parser", from_encoding='utf-8')
+
     td = dom.select('td')
     # 해당페이지의 td를 선택자로 전부가져온다
 
     # 내일 운량 393~401
-    td_pic = td[393:401]
-    td_rain = td[411:419]
+    td_pic = td[395:401]
+    td_rain = td[413:419]
     # 강수량은 태그와 값을 가져올것임
-    td_hum = td[429:437]
+    td_hum = td[431:437]
     # text값과 이미지태그값들을 가져왔으니 변환해서 새로운 리스트에 담아준다
     pic_li2 = []
     rain_li2 = []
@@ -68,7 +73,9 @@ def getplace_tom(place_name):
         else:
             hum_li2.append(h.text.strip())
 
+
     print('전운량:', pic_li2)  # 0 = 맑음 1= 구름있음
     print('강수량 :', rain_li2)  # 0 = 강수량없음
     print('습도 :', hum_li2)
+    return (pic_li2, rain_li2, hum_li2)
 getplace_tom('서울')
