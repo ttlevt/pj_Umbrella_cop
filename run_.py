@@ -14,5 +14,5 @@ def cross_v(place_name):
         return('아직잘모름')
         
 
-a = cross_v('울산광역시')
-print(a)
+# a = cross_v('울산광역시')
+# print(a)
