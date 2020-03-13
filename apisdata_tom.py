@@ -6,6 +6,8 @@ import numpy as np
 
 
 def apis_Getplace_tom(place_name):
+    if place_name in ['부산','대구','인천','대전','광주','울산']:
+        place_name = place_name+'광역시'
     df = pd.read_csv('./apis/xy_data.csv', encoding='cp949')
     xy_li = []
 
@@ -47,10 +49,10 @@ def apis_Getplace_tom(place_name):
     serv = 'serviceKey=oHgZfD9oeFM8cre%2BCD7dYf19ZdDFQMXdgk1wHMs8jmBvzvNvnimHQUQuAlWVD3dS1l78I1mHil41Z7ooft13mQ%3D%3D&'\
            'pageNo=2&numOfRows=80&dataType=XML&base_date={}&base_time=2330&{}'.format(today, xy)
 
-    print(baseurl+serv)
+
     response = requests.get(baseurl+serv)
 
-    # print(baseurl+serv)
+
     assert response.status_code is 200
     dom = BeautifulSoup(response.content, "html.parser")
     sel2 = dom.select('items')
@@ -74,14 +76,24 @@ def apis_Getplace_tom(place_name):
     for i in rain:
         rain2.append(int(i)/2)
         rain2.append(int(i)/2)
+    idx = [9, 12, 15, 18, 21, 0]
+    apis_tom = pd.DataFrame(data=cli, index=idx, columns=['cloudy'])
+    apis_tom['mm'] = rain2
+    apis_tom['percent'] = reh
 
-    print('cloudy:', cli, 'rain:', rain2, 'reh:', reh)
-    return( cli, rain2, reh)
+    import pickle
+    tree = pickle.load(open("weather.pkl", "rb"))
+    result = tree.predict(apis_tom)
+    if 1.0 in result:
+        a = 1  # 1 필요  0 불필요
+    else:
+        a = 0
+    return a
 
 # 전운량 시작 6 17 27 38 47 59 68 79
 # 강수량 14 35 56 76
 # 습도 시작 5 15 26 36 46 57 67 77
-apis_Getplace_tom('울산광역시')
-
+b = apis_Getplace_tom('울산광역시')
+print(b)
 
 #     base_time=2300 # base_time은 작일 2300 or 2330 부터 조회해야 3시데이터부터쭉나온다

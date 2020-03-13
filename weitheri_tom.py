@@ -1,10 +1,11 @@
 # 내일의 날씨 크롤링해서 가져오기
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
 
 
+def wei_getplace_tom(place_name):
 
-def getplace_tom(place_name):
     if len(place_name) > 4:
         place_name = place_name[0:2]
     if place_name[-1] == '시':
@@ -21,7 +22,7 @@ def getplace_tom(place_name):
     for i in a_tag2:
         name.append(i.text)
     # tag2 = a태그의 88~260까지 즉 모든지역들의 이름이 적힌 링크들을 name리스트에 담음
-    print(name)
+
     li = []
     for i in a_tag2:
         tdx = str(i).split('?')[1]
@@ -72,10 +73,32 @@ def getplace_tom(place_name):
             hum_li2.append(0)
         else:
             hum_li2.append(h.text.strip())
+    idx = [9, 12, 15, 18, 21, 0]
+    wei_tom = pd.DataFrame(data=pic_li2, index=idx, columns=['cloudy'])
+    wei_tom['mm'] = rain_li2
+    wei_tom['percent'] = hum_li2
+
+    import pickle
+    tree = pickle.load(open("weather.pkl", "rb"))
+    pre_result = tree.predict(wei_tom)
+
+    # umli = []
+    # for i in pre_result:
+    #     if i > 0:
+    #         umli.append('1')
+    #     else :
+    #         umli.append('0')
+    # um = ""
+    a = 0
+
+    if 1.0 in pre_result:
+        a = 1  # 1 필요  0 불필요
+    else:
+        a = 0
+    return a
 
 
-    print('전운량:', pic_li2)  # 0 = 맑음 1= 구름있음
-    print('강수량 :', rain_li2)  # 0 = 강수량없음
-    print('습도 :', hum_li2)
-    return (pic_li2, rain_li2, hum_li2)
-getplace_tom('서울')
+
+
+b=wei_getplace_tom('울릉도')
+print(b)

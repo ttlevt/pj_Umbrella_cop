@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pickle
 
 df = pd.read_csv('./train/daejeon_ttl.csv')
 
@@ -39,13 +40,20 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=77)
 
 from sklearn.tree import DecisionTreeClassifier
 tree = DecisionTreeClassifier()
-
+print(x_train)
 tree.fit(x_train, y_train)
 
 predict = tree.predict(x_test)
 
 from sklearn.metrics import classification_report
-print(classification_report(y_test, predict))
+# print(predict)
+tree.score
+
+pickle.dump(tree, open("weather.pkl", "wb"))
+
+
+
+# print(classification_report(y_test, predict))
 # --
 # df_merge = pd.DataFrame({'test':y_test , 'predict':predict})
 # print(df_merge)
