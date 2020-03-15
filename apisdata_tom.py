@@ -49,7 +49,7 @@ def apis_Getplace_tom(place_name):
     serv = 'serviceKey=oHgZfD9oeFM8cre%2BCD7dYf19ZdDFQMXdgk1wHMs8jmBvzvNvnimHQUQuAlWVD3dS1l78I1mHil41Z7ooft13mQ%3D%3D&'\
            'pageNo=2&numOfRows=80&dataType=XML&base_date={}&base_time=2330&{}'.format(today, xy)
 
-
+    # print(baseurl+serv)
     response = requests.get(baseurl+serv)
 
 
@@ -93,7 +93,7 @@ def apis_Getplace_tom(place_name):
 # 전운량 시작 6 17 27 38 47 59 68 79
 # 강수량 14 35 56 76
 # 습도 시작 5 15 26 36 46 57 67 77
-b = apis_Getplace_tom('울산광역시')
-print(b)
+# b = apis_Getplace_tom('울산광역시')
+# apis_Getplace_tom('광주')
 
 #     base_time=2300 # base_time은 작일 2300 or 2330 부터 조회해야 3시데이터부터쭉나온다

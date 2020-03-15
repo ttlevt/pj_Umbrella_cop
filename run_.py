@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 
 from apisdata_craw import apis_Getplace
 from weatheri_today import wei_getplace
@@ -7,11 +8,11 @@ def cross_v(place_name):
     val2 = wei_getplace(place_name)
     if val1 == val2:
         if val1 == 0:
-            return('우산필요없음')
+            return('dont need um')
         else :
-            return('우산필요함')
+            return('need umb')
     else:
-        return('아직잘모름')
+        return('not yet')
         
 
 # a = cross_v('울산광역시')
