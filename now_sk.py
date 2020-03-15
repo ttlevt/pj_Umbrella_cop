@@ -20,7 +20,7 @@ def now_sk(place_name):
     response = requests.get(url_)
     assert response.status_code is 200
     dom = BeautifulSoup(response.content, "html.parser")
-    cd = dom.find("pre")
+    cd = dom.find()
     print(cd)
     # print(dom)
     # print(dom['SKY'].values())
