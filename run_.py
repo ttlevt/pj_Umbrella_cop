@@ -8,9 +8,9 @@ def cross_v(place_name):
     val2 = wei_getplace(place_name)
     if val1 == val2:
         if val1 == 0:
-            return('dont need um')
+            return('sunny')
         else :
-            return('need umb')
+            return('rainy')
     else:
         return('not yet')
         
