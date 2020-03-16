@@ -17,15 +17,16 @@ def now_sk(place_name):
     baseurl = 'https://apis.openapi.sk.com/weather/current/hourly?'
     skey = '&appKey=l7xxbca72c23f2a144839a2c531cfdde3ec3'
     url_ = baseurl+xy+skey
+    print(url_)
     response = requests.get(url_)
     assert response.status_code is 200
     dom = BeautifulSoup(response.content, "html.parser")
-    cd = dom.find()
-    print(cd)
+    # cd = dom.find()
+    print(dom)
     # print(dom)
     # print(dom['SKY'].values())
 
-now_sk('광주')
+now_sk('광주시')
 
 
 
