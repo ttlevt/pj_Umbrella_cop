@@ -99,7 +99,7 @@ def apis_Getplace(place_name):
     # print(apis_today)
     # print(place_name)
     import pickle
-    from sklearn import tree
+    # from sklearn import tree
     tree = pickle.load(open("weather.pkl", "rb"))
     result = tree.predict(apis_today)
     if 1.0 in result:
