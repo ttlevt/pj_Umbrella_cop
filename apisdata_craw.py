@@ -55,7 +55,7 @@ def apis_Getplace(place_name):
     # print(baseurl+serv)
     assert response.status_code is 200
     dom = BeautifulSoup(response.content, "html.parser")
-    sel2 = dom.select('items')
+    # sel2 = dom.select('items')
     fcstV = dom.select('fcstValue')
     vali = []
     for value in fcstV:
@@ -99,6 +99,7 @@ def apis_Getplace(place_name):
     # print(apis_today)
     # print(place_name)
     import pickle
+    from sklearn import tree
     tree = pickle.load(open("weather.pkl", "rb"))
     result = tree.predict(apis_today)
     if 1.0 in result:
