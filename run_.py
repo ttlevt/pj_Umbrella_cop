@@ -15,7 +15,7 @@ def cross_v(place_name):
         if val1 == 0:
             rst_today ='sunny'
         else:
-            rst_today='rainy..'
+            rst_today='rainy'
     else :
         rst_today ='rainy'
     val3 = apis_Getplace_tom(place_name)
@@ -24,9 +24,9 @@ def cross_v(place_name):
         if val3 == 0:
             rst_tom = "sunny!"
         else:
-            rst_tom = "rainy.."
+            rst_tom = "rainy"
     else:
-        rst_tom ="rainy..."
+        rst_tom ="rainy"
     print('rst_tom=', rst_tom)
     return('today:' + rst_today + ' tomorrow:'+ rst_tom)
 
