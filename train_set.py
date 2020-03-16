@@ -99,6 +99,7 @@ result['xgb'] = xgb.score(x_test, y_test)
 
 se1 = pd.Series(result).sort_values()
 print(se1)
-# se1.plot(kind='barh')
 '''
+# se1.plot(kind='barh')
+
 

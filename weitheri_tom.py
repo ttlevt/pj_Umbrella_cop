@@ -100,5 +100,5 @@ def wei_getplace_tom(place_name):
 
 
 
-b=wei_getplace_tom('울릉도')
-print(b)
+# b=wei_getplace_tom('울릉도')
+# print(b)
