@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pickle
 
-df = pd.read_csv('./train/daejeon_ttl.csv')
+df = pd.read_csv('./train/pusan_ttl.csv')
 
 df2 = df.set_index(df['date'], drop=True, append=False)
 
@@ -40,7 +40,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=77)
 
 from sklearn.tree import DecisionTreeClassifier
 tree = DecisionTreeClassifier()
-print(x_train)
+# print(x_train)
 tree.fit(x_train, y_train)
 
 predict = tree.predict(x_test)
@@ -49,7 +49,7 @@ from sklearn.metrics import classification_report
 # print(predict)
 tree.score
 
-pickle.dump(tree, open("weather.pkl", "wb"))
+pickle.dump(tree, open("weather_ks.pkl", "wb"))
 
 
 

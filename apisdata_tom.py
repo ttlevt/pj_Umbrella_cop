@@ -2,7 +2,7 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-import numpy as np
+from select_pkl import select_pkl
 
 
 def apis_Getplace_tom(place_name):
@@ -32,7 +32,7 @@ def apis_Getplace_tom(place_name):
              '상주시', '문경시', '경산시', '군위군', '의성군', '청송군', '영양군', '영덕군', '청도군',
              '고령군', '성주군', '칠곡군', '예천군', '봉화군', '울진군', '울릉군', '독도', '창원시',
              '진주시', '통영시', '사천시', '김해시', '밀양시', '거제시', '양산시', '의령군', '함안군',
-             '창녕군', '고성군', '남해군', '하동군', '산청군', '함양군', '거창군', '합천군', '고산군',
+             '창녕군', '고성군', '남해군', '하동군', '산청군', '함양군', '거창군', '합천군', '고산',
              '성산포', '성판악', '제주시', '서귀포시']
     loc_dict = dict()
     loc_dict = {name:value for name, value in zip(locli, xy_li)}
@@ -69,7 +69,7 @@ def apis_Getplace_tom(place_name):
             cli.append(0)
         else :
             cli.append(1)
-    rain = [vali[34],vali[55],vali[75]]
+    rain = [vali[34], vali[55], vali[75]]
     rain2 = []
     reh = [vali[25],vali[35],vali[45],vali[56],vali[66],vali[76]]
     # 강수량이 6시간마다누적되므로 실제값은 4개뿐이라서 8개로 늘리도록함
@@ -81,9 +81,12 @@ def apis_Getplace_tom(place_name):
     apis_tom['mm'] = rain2
     apis_tom['percent'] = reh
 
-    import pickle
-    tree = pickle.load(open("weather.pkl", "rb"))
-    result = tree.predict(apis_tom)
+    # import pickle
+    # tree = pickle.load(open("weather.pkl", "rb"))
+    # result = tree.predict(apis_tom)
+
+    result = select_pkl(place_name, apis_tom)
+
     if 1.0 in result:
         a = 1  # 1 필요  0 불필요
     else:

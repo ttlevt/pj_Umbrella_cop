@@ -2,13 +2,20 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from select_pkl import select_pkl
 
-
+#ex 양평군
 def wei_getplace_tom(place_name):
-
-    if len(place_name) > 4:
+    if len(place_name) == 7:
         place_name = place_name[0:2]
-    if place_name[-1] == '시':
+    if place_name == '울릉군':
+        place_name = '울릉도'
+    # 광역시처리 = 2글자 받아오니까 상관없이 검색해야하네
+    if len(place_name) == 2:
+        place_name = place_name
+    # 일반시 처리 = 3글자 들어와서 한글자빼야함
+    # 울릉도 현재문제=울릉군으로 입력값이 온다는거지
+    if place_name[-1] == '시' or '군':
         place_name = place_name[0:-1]
     response = requests.get(
         "https://www.weatheri.co.kr/forecast/forecast01.php?rid=0202040103&k=1&a_name=%EA%B0%80%ED%8F%89")
@@ -78,9 +85,9 @@ def wei_getplace_tom(place_name):
     wei_tom['mm'] = rain_li2
     wei_tom['percent'] = hum_li2
 
-    import pickle
-    tree = pickle.load(open("weather.pkl", "rb"))
-    pre_result = tree.predict(wei_tom)
+    # import pickle
+    # tree = pickle.load(open("weather.pkl", "rb"))
+    # pre_result = tree.predict(wei_tom)
 
     # umli = []
     # for i in pre_result:
@@ -90,8 +97,9 @@ def wei_getplace_tom(place_name):
     #         umli.append('0')
     # um = ""
     a = 0
+    result = select_pkl(place_name, wei_tom)
 
-    if 1.0 in pre_result:
+    if 1.0 in result:
         a = 1  # 1 필요  0 불필요
     else:
         a = 0

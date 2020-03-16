@@ -2,7 +2,7 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-
+from select_pkl import select_pkl
 
 def apis_Getplace(place_name):
     if place_name in ['부산','대구','인천','대전','광주','울산']:
@@ -98,10 +98,11 @@ def apis_Getplace(place_name):
 
     # print(apis_today)
     # print(place_name)
-    import pickle
+    # import pickle
     # from sklearn import tree
-    tree = pickle.load(open("weather.pkl", "rb"))
-    result = tree.predict(apis_today)
+    # tree = pickle.load(open("weather.pkl", "rb"))
+    # result = tree.predict(apis_today)
+    result = select_pkl(place_name, apis_today)
     if 1.0 in result:
         a = 1  # 1 필요  0 불필요
     else:
