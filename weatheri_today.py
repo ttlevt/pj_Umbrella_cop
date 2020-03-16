@@ -1,16 +1,21 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-
+from select_pkl import select_pkl
 
 # dict 이름만 원하는걸로 바꿔주면 되니까 천천히 하자 금방할수있음
 def wei_getplace(place_name):
-
-    if len(place_name) > 4:
+    if len(place_name) == 7:
         place_name = place_name[0:2]
-    if place_name[-1] == '시':
+    if place_name == '울릉군':
+        place_name = '울릉도'
+    # 광역시처리 = 2글자 받아오니까 상관없이 검색해야하네
+    if len(place_name) == 2:
+        place_name = place_name
+    # 일반시 처리 = 3글자 들어와서 한글자빼야함
+    # 울릉도 현재문제=울릉군으로 입력값이 온다는거지
+    if place_name[-1] == '시' or '군':
         place_name = place_name[0:-1]
-
     response = requests.get(
         "https://www.weatheri.co.kr/forecast/forecast01.php?rid=0202040103&k=1&a_name=%EA%B0%80%ED%8F%89")
 
@@ -86,10 +91,12 @@ def wei_getplace(place_name):
     wei_today['mm'] = rain_li
     wei_today['percent'] = hum_li
 
-    import pickle
-    tree = pickle.load(open("weather.pkl", "rb"))
-    result = tree.predict(wei_today)
 
+    # import pickle
+    # tree = pickle.load(open("weather.pkl", "rb"))
+    # result = tree.predict(wei_today)
+
+    result = select_pkl(place_name, wei_today)
     if 1.0 in result:
         a = 1  # 1 필요  0 불필요
     else:
@@ -98,5 +105,5 @@ def wei_getplace(place_name):
 
 
 
-# b =wei_getplace('울산광역시')
+# b =wei_getplace('울릉군')
 # print(b)
