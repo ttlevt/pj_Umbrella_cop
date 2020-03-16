@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-df = pd.read_csv('./train/seoul_ttl.csv')
+df = pd.read_csv('./train/jeju_ttl.csv')
 
 df2 = df.set_index(df['date'], drop=True, append=False)
 
@@ -48,7 +48,7 @@ from sklearn.metrics import classification_report
 # print(predict)
 tree.score
 import pickle
-pickle.dump(tree, open("weather_kk.pkl", "wb"))
+pickle.dump(tree, open("weather_jj.pkl", "wb"))
 
 
 
