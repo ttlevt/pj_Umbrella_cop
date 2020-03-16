@@ -1,10 +1,9 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
-import pickle
 
-df = pd.read_csv('./train/pusan_ttl.csv')
+
+df = pd.read_csv('./train/seoul_ttl.csv')
 
 df2 = df.set_index(df['date'], drop=True, append=False)
 
@@ -48,8 +47,8 @@ predict = tree.predict(x_test)
 from sklearn.metrics import classification_report
 # print(predict)
 tree.score
-
-pickle.dump(tree, open("weather_ks.pkl", "wb"))
+import pickle
+pickle.dump(tree, open("weather_kk.pkl", "wb"))
 
 
 
