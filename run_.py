@@ -14,16 +14,21 @@ def cross_v(place_name):
     if val1 == val2:
         if val1 == 0:
             rst_today ='sunny'
-        else :
-            rst_today ='rainy'
+        else:
+            rst_today='rainy..'
+    else :
+        rst_today ='rainy'
     val3 = apis_Getplace_tom(place_name)
     val4 = wei_getplace_tom
     if val3 == val4:
         if val3 == 0:
-            rst_tom = 'sunny'
+            rst_tom = "sunny!"
         else:
-            rst_tom = 'rainy'
-    return('today:' + rst_today + ' tomorrow:' + rst_tom)
+            rst_tom = "rainy.."
+    else:
+        rst_tom ="rainy..."
+    print('rst_tom=', rst_tom)
+    return('today:' + rst_today + ' tomorrow:'+ rst_tom)
 
 # a = cross_v('울산광역시')
 # print(a)
