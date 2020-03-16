@@ -28,7 +28,7 @@ def cross_v(place_name):
     else:
         rst_tom = 'not yet'
 
-     return('today:', rst_today,'tomorrow:',rst_tom)
+    return('today:' + rst_today + '  tomorrow:' + rst_tom)
 
 # a = cross_v('울산광역시')
 # print(a)
