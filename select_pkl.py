@@ -4,7 +4,7 @@ def select_pkl(place_name, data_rst):
     import pickle
     if place_name in lc['kk'].values:
         # from sklearn import tree
-        tree = pickle.load(opipen("weather_kk.pkl", "rb"))
+        tree = pickle.load(open("weather_kk.pkl", "rb"))
         result= tree.predict(data_rst)
     elif place_name in lc['kw'].values:
         # from sklearn import tree
