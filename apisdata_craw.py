@@ -2,7 +2,7 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-import pickle
+
 
 def apis_Getplace(place_name):
     if place_name in ['부산','대구','인천','대전','광주','울산']:
@@ -98,7 +98,7 @@ def apis_Getplace(place_name):
 
     # print(apis_today)
     # print(place_name)
-
+    import pickle
     tree = pickle.load(open("weather.pkl", "rb"))
     result = tree.predict(apis_today)
     if 1.0 in result:

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pickle
 
-df = pd.read_csv('./train/daejeon_ttl.csv')
+df = pd.read_csv('./train/jeju_ttl.csv')
 
 df2 = df.set_index(df['date'], drop=True, append=False)
 
@@ -49,7 +49,7 @@ from sklearn.metrics import classification_report
 # print(predict)
 tree.score
 
-pickle.dump(tree, open("weather.pkl", "wb"))
+pickle.dump(tree, open("weather_jj.pkl", "wb"))
 
 
 
@@ -99,6 +99,7 @@ result['xgb'] = xgb.score(x_test, y_test)
 
 se1 = pd.Series(result).sort_values()
 print(se1)
-# se1.plot(kind='barh')
 '''
+# se1.plot(kind='barh')
+
 
