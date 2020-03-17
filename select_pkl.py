@@ -1,5 +1,7 @@
 import pandas as pd
+
 def select_pkl(place_name, data_rst):
+    from sklearn.tree import DecisionTreeClassifier
 # lc = pd.read_csv('./apis/sector.csv', encoding='CP949')
     import pickle
 # try:
