@@ -6,6 +6,8 @@ from select_pkl import select_pkl
 
 
 def apis_Getplace_tom(place_name):
+    if place_name == '세종특별자치시':
+        place_name = place_name[0:2]
     if place_name in ['부산','대구','인천','대전','광주','울산']:
         place_name = place_name+'광역시'
     df = pd.read_csv('./apis/xy_data.csv', encoding='cp949')
@@ -102,7 +104,6 @@ def apis_Getplace_tom(place_name):
 # 강수량 14 35 56 76
 # 습도 시작 5 15 26 36 46 57 67 77
 
-# b = apis_Getplace_tom('울릉군')
-# apis_Getplace_tom('광주')
+# b = apis_Getplace_tom('독도')
 # print(b)
 #     base_time=2300 # base_time은 작일 2300 or 2330 부터 조회해야 3시데이터부터쭉나온다

@@ -5,6 +5,8 @@ from select_pkl import select_pkl
 
 # dict 이름만 원하는걸로 바꿔주면 되니까 천천히 하자 금방할수있음
 def wei_getplace(place_name):
+    if place_name == '광주':
+        place_name = '광주광역시'
     if len(place_name) == 7:
         place_name = place_name[0:2]
     if place_name == '울릉군':
@@ -14,8 +16,9 @@ def wei_getplace(place_name):
         place_name = place_name
     # 일반시 처리 = 3글자 들어와서 한글자빼야함
     # 울릉도 현재문제=울릉군으로 입력값이 온다는거지
-    if place_name[-1] == '시' or '군':
+    if len(place_name) < 5 and (place_name[-1] == '시' or '군'):
         place_name = place_name[0:-1]
+    # print(place_name)
     response = requests.get(
         "https://www.weatheri.co.kr/forecast/forecast01.php?rid=0202040103&k=1&a_name=%EA%B0%80%ED%8F%89")
 
@@ -37,6 +40,7 @@ def wei_getplace(place_name):
         # 앞뒤로 잘라서 변동값만 추려낸 값을 li리스트에 담는다
         li.append(tdx2)
     loc = {name: value for name, value in zip(name, li)}
+    # print(loc)
     # name리스트의 값(즉 지역명)과 li리스트(지역별링크)를 loc사전으로 묶는다
     if place_name in loc:
         # 입력받은 지역명이 사전에 있을경우 사전의 벨류값을 고정링크 후면에 이어붙여서 
@@ -44,6 +48,9 @@ def wei_getplace(place_name):
 
         response = requests.get("https://www.weatheri.co.kr/forecast/forecast01.php?" + str(loc.pop(place_name)) + '')
         assert response.status_code is 200
+        dom = BeautifulSoup(response.content, "html.parser", from_encoding='utf-8')
+    elif place_name == '광주광역시':
+        response = requests.get('https://www.weatheri.co.kr/forecast/forecast01.php?rid=0901010100&k=7&a_name=%EA%B4%91%EC%A3%BC')
         dom = BeautifulSoup(response.content, "html.parser", from_encoding='utf-8')
     td = dom.select('td')
     # 해당페이지의 td를 선택자로 전부가져온다
@@ -105,5 +112,5 @@ def wei_getplace(place_name):
 
 
 
-# b =wei_getplace('울릉군')
-# print(b)
+b =wei_getplace('광주광역시')
+print(b)

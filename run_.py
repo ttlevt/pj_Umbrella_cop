@@ -7,6 +7,7 @@ from weatheri_tom import wei_getplace_tom
 from now_sk import now_sk
 
 def cross_v(place_name):
+    # print(place_name)
     val0 = now_sk(place_name)
     val1 = apis_Getplace(place_name)
     val2 = wei_getplace(place_name)
@@ -29,5 +30,5 @@ def cross_v(place_name):
     # print('rst_tom=', rst_tom)
     return('today:' + rst_today + ' tomorrow:'+ rst_tom)
 
-# a = cross_v('울산광역시')
+# a = cross_v('울산')
 # print(a)

@@ -5,7 +5,9 @@ import pandas as pd
 from select_pkl import select_pkl
 
 def apis_Getplace(place_name):
-    if place_name in ['부산','대구','인천','대전','광주','울산']:
+    if place_name == '세종특별자치시':
+        place_name = place_name[0:2]
+    if place_name in ['부산', '대구', '인천', '대전', '광주', '울산']:
         place_name = place_name+'광역시'
     # print(place_name)
     df = pd.read_csv('./apis/xy_data.csv', encoding='CP949')
@@ -49,7 +51,7 @@ def apis_Getplace(place_name):
     serv = 'serviceKey=oHgZfD9oeFM8cre%2BCD7dYf19ZdDFQMXdgk1wHMs8jmBvzvNvnimHQUQuAlWVD3dS1l78I1mHil41Z7ooft13mQ%3D%3D&'\
            'pageNo=1&numOfRows=80&dataType=XML&base_date={}&base_time=2330&{}'.format(today, xy)
 
-    print(baseurl+serv)
+    # print(baseurl+serv)
     response = requests.get(baseurl+serv)
 
     # print(baseurl+serv)
@@ -102,6 +104,8 @@ def apis_Getplace(place_name):
     # print(apis_today)
     # apis_today = pd.DataFrame.from_records(tli)
     # ex = pd.DataFrame(data=cli, index=idx ,columns=['cloudy'])
+
+
     apis_today = pd.DataFrame(data=cli, index=idx, columns=['cloudy'])
     # print(apis_today)
     apis_today['mm'] = rain2
@@ -125,7 +129,7 @@ def apis_Getplace(place_name):
 # 전운량 시작 4번째 15 25 36 45 57 66 77
 # 강수량  12 33 54 74
 # 습도 시작 3 13 24 34 44 55 65 75
-# b = apis_Getplace('울릉군')
+# b = apis_Getplace('세종특별자치시')
 # print(b)
 
 #     base_time=2300 # base_time은 작일 2300 or 2330 부터 조회해야 3시데이터부터쭉나온다
