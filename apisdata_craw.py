@@ -10,7 +10,7 @@ def apis_Getplace(place_name):
     if place_name in ['부산', '대구', '인천', '대전', '광주', '울산']:
         place_name = place_name+'광역시'
     # print(place_name)
-    df = pd.read_csv('./apis/xy_data.csv', encoding='CP949')
+    df = pd.read_csv('./apis/xy_data.csv', encoding='utf-8')
     xy_li = []
 
     for i in df['x']:
@@ -38,6 +38,7 @@ def apis_Getplace(place_name):
              '성산포', '성판악', '제주시', '서귀포시']
     loc_dict = dict()
     loc_dict = {name:value for name, value in zip(locli, xy_li)}
+    print(loc_dict)
     # loc_dict으로 지역명과 좌표값을 사전형태로 묶어줌
 
 
@@ -129,7 +130,7 @@ def apis_Getplace(place_name):
 # 전운량 시작 4번째 15 25 36 45 57 66 77
 # 강수량  12 33 54 74
 # 습도 시작 3 13 24 34 44 55 65 75
-# b = apis_Getplace('세종특별자치시')
+# b = apis_Getplace('대전')
 # print(b)
 
 #     base_time=2300 # base_time은 작일 2300 or 2330 부터 조회해야 3시데이터부터쭉나온다
