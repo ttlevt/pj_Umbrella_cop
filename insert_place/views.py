@@ -9,7 +9,7 @@ from django.http import JsonResponse
 #     result = cross_v(request)
 #     return HttpResponse(result)
 def home(request):
-    # print(request)
+    print('requeststype:',type(request))
     place_name = request.GET['name']
     result = cross_v(place_name)
     return JsonResponse(result, safe=False)
