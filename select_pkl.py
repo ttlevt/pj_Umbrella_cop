@@ -1,6 +1,7 @@
 import pandas as pd
 def select_pkl(place_name, data_rst):
-    lc = pd.read_csv('./apis/sector.csv', encoding='CP949')
+    print('placccccccccccccccccccccccccccccc:', place_name)
+    lc = pd.read_csv('./apis/sector.csv', encoding='utf-8')
     import pickle
     # try:
 
@@ -31,4 +32,3 @@ def select_pkl(place_name, data_rst):
     # except Exception as e:
         # print(e)
     return result
-# select_pkl('서울')
