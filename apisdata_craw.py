@@ -69,7 +69,7 @@ def apis_Getplace(place_name):
     rain = [vali[32], vali[53], vali[73]]
     cloudy = [vali[24], vali[35], vali[44], vali[56], vali[65], vali[76]]
     reh = [vali[23],vali[33],vali[43],vali[54],vali[64],vali[74]]
-    print(place_name)
+    # print(place_name)
     if place_name == '울릉군' or place_name == '독도':
         reh = [vali[13], vali[25], vali[36], vali[47], vali[59], vali[70]]
         rain = [vali[12], vali[35], vali[58]]
@@ -81,9 +81,9 @@ def apis_Getplace(place_name):
             cli.append(1)
     # print(place_name)
     # 강수량이 6시간마다누적되므로 실제값은 4개뿐이라서 8개로 늘리도록함-> 패치 6개로 줄임
-    print('cloudy:',cli)
-    print('reh:',reh)
-    print('rain:',rain)
+    # print('cloudy:',cli)
+    # print('reh:',reh)
+    # print('rain:',rain)
     for i in rain:
         rain2.append(float(i)/2)
         rain2.append(float(i)/2)
@@ -125,7 +125,7 @@ def apis_Getplace(place_name):
 # 전운량 시작 4번째 15 25 36 45 57 66 77
 # 강수량  12 33 54 74
 # 습도 시작 3 13 24 34 44 55 65 75
-b = apis_Getplace('울릉군')
-print(b)
+# b = apis_Getplace('울릉군')
+# print(b)
 
 #     base_time=2300 # base_time은 작일 2300 or 2330 부터 조회해야 3시데이터부터쭉나온다
