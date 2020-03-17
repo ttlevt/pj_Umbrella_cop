@@ -39,7 +39,7 @@ def apis_Getplace(place_name):
     # loc_dict으로 지역명과 좌표값을 사전형태로 묶어줌
 
 
-    # place_name = '울산광역시'
+
     if place_name in loc_dict.keys():
         xy = loc_dict.pop(place_name)
     today = (str(datetime.today()).split()[0])
@@ -49,7 +49,7 @@ def apis_Getplace(place_name):
     serv = 'serviceKey=oHgZfD9oeFM8cre%2BCD7dYf19ZdDFQMXdgk1wHMs8jmBvzvNvnimHQUQuAlWVD3dS1l78I1mHil41Z7ooft13mQ%3D%3D&'\
            'pageNo=1&numOfRows=80&dataType=XML&base_date={}&base_time=2330&{}'.format(today, xy)
 
-
+    print(baseurl+serv)
     response = requests.get(baseurl+serv)
 
     # print(baseurl+serv)
@@ -57,22 +57,32 @@ def apis_Getplace(place_name):
     dom = BeautifulSoup(response.content, "html.parser")
     # sel2 = dom.select('items')
     fcstV = dom.select('fcstValue')
+
     vali = []
     for value in fcstV:
         vali.append(value.text)
     # print(baseurl+serv)
     # print(vali)
-    cloudy = [vali[24],vali[35],vali[44],vali[56],vali[65],vali[76]]
+
     cli = []
+    rain2 = []
+    rain = [vali[32], vali[53], vali[73]]
+    cloudy = [vali[24], vali[35], vali[44], vali[56], vali[65], vali[76]]
+    reh = [vali[23],vali[33],vali[43],vali[54],vali[64],vali[74]]
+    if place_name == '울릉군' or place_name == '독도':
+        reh = [vali[13], vali[25], vali[36], vali[47], vali[59], vali[70]]
+        rain = [vali[12], vali[35], vali[58]]
+        cloudy = [vali[15], vali[26], vali[38], vali[48], vali[61], vali[71]]
     for i in cloudy:
         if i == '1':
             cli.append(0)
         else :
             cli.append(1)
-    rain = [vali[32],vali[53],vali[73]]
-    rain2 = []
-    reh = [vali[23],vali[33],vali[43],vali[54],vali[64],vali[74]]
+    # print(place_name)
     # 강수량이 6시간마다누적되므로 실제값은 4개뿐이라서 8개로 늘리도록함-> 패치 6개로 줄임
+    # print('cloudy:',cli)
+    # print('reh:',reh)
+    # print('rain:',rain)
     for i in rain:
         rain2.append(int(i)/2)
         rain2.append(int(i)/2)
@@ -92,6 +102,7 @@ def apis_Getplace(place_name):
     # apis_today = pd.DataFrame.from_records(tli)
     # ex = pd.DataFrame(data=cli, index=idx ,columns=['cloudy'])
     apis_today = pd.DataFrame(data=cli, index=idx, columns=['cloudy'])
+    # print(apis_today)
     apis_today['mm'] = rain2
     apis_today['percent'] = reh
 
@@ -109,23 +120,11 @@ def apis_Getplace(place_name):
         a = 0
     return int(a)
 
-# a= apis_Getplace('광주시')
-# print(a)
-
-#클라우드  mm percent
-
-
-
-
-
-
-
-
 
 # 전운량 시작 4번째 15 25 36 45 57 66 77
 # 강수량  12 33 54 74
 # 습도 시작 3 13 24 34 44 55 65 75
-# b = apis_Getplace('울산')
+# b = apis_Getplace('독도')
 # print(b)
 
 #     base_time=2300 # base_time은 작일 2300 or 2330 부터 조회해야 3시데이터부터쭉나온다

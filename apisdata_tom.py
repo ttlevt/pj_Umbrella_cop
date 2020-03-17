@@ -62,16 +62,21 @@ def apis_Getplace_tom(place_name):
         vali.append(value.text)
     # print(baseurl+serv)
     # print(vali)
-    cloudy = [vali[26],vali[37],vali[46],vali[58],vali[67],vali[78]]
+
     cli = []
+    rain2 = []
+    cloudy = [vali[26], vali[37], vali[46], vali[58], vali[67], vali[78]]
+    rain = [vali[34], vali[55], vali[75]]
+    reh = [vali[25],vali[35],vali[45],vali[56],vali[66],vali[76]]
+    if place_name == '울릉군' or place_name == '독도':
+        reh = [vali[13], vali[25], vali[36], vali[47], vali[59], vali[70]]
+        rain = [vali[12], vali[35], vali[58]]
+        cloudy = [vali[15], vali[26], vali[38], vali[48], vali[61], vali[71]]
     for i in cloudy:
         if i == '1':
             cli.append(0)
         else :
             cli.append(1)
-    rain = [vali[34], vali[55], vali[75]]
-    rain2 = []
-    reh = [vali[25],vali[35],vali[45],vali[56],vali[66],vali[76]]
     # 강수량이 6시간마다누적되므로 실제값은 4개뿐이라서 8개로 늘리도록함
     for i in rain:
         rain2.append(int(i)/2)
@@ -91,12 +96,13 @@ def apis_Getplace_tom(place_name):
         a = 1  # 1 필요  0 불필요
     else:
         a = 0
-    return a
+    return int(a)
 
 # 전운량 시작 6 17 27 38 47 59 68 79
 # 강수량 14 35 56 76
 # 습도 시작 5 15 26 36 46 57 67 77
-# b = apis_Getplace_tom('울산광역시')
-# apis_Getplace_tom('광주')
 
+# b = apis_Getplace_tom('울릉군')
+# apis_Getplace_tom('광주')
+# print(b)
 #     base_time=2300 # base_time은 작일 2300 or 2330 부터 조회해야 3시데이터부터쭉나온다
