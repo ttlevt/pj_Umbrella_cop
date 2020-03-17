@@ -1,7 +1,6 @@
 import pandas as pd
 def select_pkl(place_name, data_rst):
-    print('placccccccccccccccccccccccccccccc:', place_name)
-    lc = pd.read_csv('./apis/sector.csv', encoding='utf-8')
+    lc = pd.read_csv('./apis/sector.csv')
     import pickle
     # try:
 
