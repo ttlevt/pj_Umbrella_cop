@@ -107,7 +107,7 @@ def apis_Getplace(place_name):
         a = 1  # 1 필요  0 불필요
     else:
         a = 0
-    return a
+    return int(a)
 
 # a= apis_Getplace('광주시')
 # print(a)
