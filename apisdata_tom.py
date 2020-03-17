@@ -79,8 +79,8 @@ def apis_Getplace_tom(place_name):
             cli.append(1)
     # 강수량이 6시간마다누적되므로 실제값은 4개뿐이라서 8개로 늘리도록함
     for i in rain:
-        rain2.append(int(i)/2)
-        rain2.append(int(i)/2)
+        rain2.append(float(i)/2)
+        rain2.append(float(i)/2)
     idx = [9, 12, 15, 18, 21, 0]
     apis_tom = pd.DataFrame(data=cli, index=idx, columns=['cloudy'])
     apis_tom['mm'] = rain2
