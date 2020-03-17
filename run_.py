@@ -7,7 +7,7 @@ from weatheri_tom import wei_getplace_tom
 from now_sk import now_sk
 
 def cross_v(place_name):
-    # print(place_name)
+    print(place_name)
     val0 = now_sk(place_name)
     val1 = apis_Getplace(place_name)
     val2 = wei_getplace(place_name)
