@@ -18,7 +18,7 @@ def cross_v(place_name):
         rst_today = "rainy"
     elif val1+val2 == 0 and val0 > 0:
         rst_today = "rainy"
-    else :
+    else:
         rst_today = "sunny"
     val3 = apis_Getplace_tom(place_name)
     val4 = wei_getplace_tom(place_name)

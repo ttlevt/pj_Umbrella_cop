@@ -38,7 +38,7 @@ def apis_Getplace(place_name):
              '성산포', '성판악', '제주시', '서귀포시']
     loc_dict = dict()
     loc_dict = {name:value for name, value in zip(locli, xy_li)}
-    print(loc_dict)
+    # print(loc_dict)
     # loc_dict으로 지역명과 좌표값을 사전형태로 묶어줌
 
 

@@ -8,7 +8,7 @@ from select_pkl import select_pkl
 def apis_Getplace_tom(place_name):
     if place_name == '세종특별자치시':
         place_name = place_name[0:2]
-    if place_name in ['부산','대구','인천','대전','광주','울산']:
+    if place_name in ['부산', '대구', '인천', '대전', '광주', '울산']:
         place_name = place_name+'광역시'
     df = pd.read_csv('./apis/xy_data.csv', encoding='utf-8')
     xy_li = []
