@@ -105,5 +105,5 @@ def wei_getplace(place_name):
 
 
 
-# b =wei_getplace('울릉군')
+# wei_getplace('울릉군')
 # print(b)

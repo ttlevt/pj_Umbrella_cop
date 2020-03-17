@@ -91,7 +91,7 @@ def apis_Getplace_tom(place_name):
         a = 1  # 1 필요  0 불필요
     else:
         a = 0
-    return a
+    return int(a)
 
 # 전운량 시작 6 17 27 38 47 59 68 79
 # 강수량 14 35 56 76

@@ -103,7 +103,7 @@ def wei_getplace_tom(place_name):
         a = 1  # 1 필요  0 불필요
     else:
         a = 0
-    return a
+    return int(a)
 
 
 
