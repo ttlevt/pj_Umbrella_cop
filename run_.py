@@ -11,6 +11,7 @@ def cross_v(place_name):
     val0 = now_sk(place_name)
     val1 = apis_Getplace(place_name)
     val2 = wei_getplace(place_name)
+    print('val0:', val0, 'val1:', val1, 'val2:',val2)
     rst_today = ''
     rst_tom = ''
     # print('v1+v2=', val1+val2)
