@@ -30,8 +30,12 @@ def wei_getplace(place_name):
     name = []
     for i in a_tag2:
         name.append(i.text)
+    name.pop(147)
+    name.pop(101)
+
     # tag2 = a태그의 88~260까지 즉 모든지역들의 이름이 적힌 링크들을 name리스트에 담음
-    # print(name)
+    # print('이름들:', name)
+    # print('이름들사이즈:', len(name))
     li = []
     for i in a_tag2:
         tdx = str(i).split('?')[1]
@@ -39,7 +43,15 @@ def wei_getplace(place_name):
         tdx2 = str(tdx).split('"')[0]
         # 앞뒤로 잘라서 변동값만 추려낸 값을 li리스트에 담는다
         li.append(tdx2)
+    li.pop(147)
+    li.pop(101)
+
+    # print('li크기:', len(li))
     loc = {name: value for name, value in zip(name, li)}
+    # print('사전크기:', len(loc))
+
+    # for i in name:
+    #     print(i)
     # print(loc)
     # name리스트의 값(즉 지역명)과 li리스트(지역별링크)를 loc사전으로 묶는다
     if place_name in loc:
@@ -112,5 +124,5 @@ def wei_getplace(place_name):
 
 
 
-# b =wei_getplace('광주광역시')
-# print(b)
+b =wei_getplace('광주광역시')
+print(b)

@@ -28,6 +28,9 @@ def wei_getplace_tom(place_name):
     name = []
     for i in a_tag2:
         name.append(i.text)
+    name.pop(147)
+    name.pop(101)
+
     # tag2 = a태그의 88~260까지 즉 모든지역들의 이름이 적힌 링크들을 name리스트에 담음
 
     li = []
@@ -37,6 +40,8 @@ def wei_getplace_tom(place_name):
         tdx2 = str(tdx).split('"')[0]
         # 앞뒤로 잘라서 변동값만 추려낸 값을 li리스트에 담는다
         li.append(tdx2)
+    li.pop(147)
+    li.pop(101)
     loc = {name: value for name, value in zip(name, li)}
     # name리스트의 값(즉 지역명)과 li리스트(지역별링크)를 loc사전으로 묶는다
     if place_name in loc:

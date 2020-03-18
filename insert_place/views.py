@@ -13,12 +13,12 @@ import requests
 # def index(request):
 #     result = cross_v(request)
 #     return HttpResponse(result)
-def home(requests):
-    print('req_encoding:::::',requests.encoding)
-    print('requeststype:', type(requests))
-    print('request!!!!!:', requests)
+def home(request):
+    print('req_encoding:::::',request.encoding)
+    print('requeststype:', type(request))
+    print('request!!!!!:', request)
     place_name = request.GET['name']
     print('place_name::::::', place_name)
 
     result = cross_v(place_name)
-    return JsonResponse(result, safe = False)
+    return JsonResponse(result, safe=False)

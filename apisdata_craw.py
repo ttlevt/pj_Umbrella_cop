@@ -7,7 +7,7 @@ from select_pkl import select_pkl
 def apis_Getplace(place_name):
     if place_name == '세종특별자치시':
         place_name = place_name[0:2]
-    if place_name in ['부산', '대구', '인천', '대전', '광주', '울산']:
+    if place_name in ['부산', '대구', '대전', '인천', '광주', '울산']:
         place_name = place_name+'광역시'
     # print(place_name)
     df = pd.read_csv('./apis/xy_data.csv', encoding='utf-8')
