@@ -124,5 +124,5 @@ def wei_getplace(place_name):
 
 
 
-b =wei_getplace('광주광역시')
-print(b)
+# b =wei_getplace('광주광역시')
+# print(b)

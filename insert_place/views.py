@@ -14,7 +14,7 @@ import requests
 #     result = cross_v(request)
 #     return HttpResponse(result)
 def home(request):
-    print('req_encoding:::::',request.encoding)
+    print('req_encoding:::::', request.encoding)
     print('requeststype:', type(request))
     print('request!!!!!:', request)
     place_name = request.GET['name']
