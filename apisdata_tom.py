@@ -36,6 +36,7 @@ def apis_Getplace_tom(place_name):
              '진주시', '통영시', '사천시', '김해시', '밀양시', '거제시', '양산시', '의령군', '함안군',
              '창녕군', '고성군', '남해군', '하동군', '산청군', '함양군', '거창군', '합천군', '고산',
              '성산포', '성판악', '제주시', '서귀포시']
+    # print(locli)
     loc_dict = dict()
     loc_dict = {name:value for name, value in zip(locli, xy_li)}
     # loc_dict으로 지역명과 좌표값을 사전형태로 묶어줌
