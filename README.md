@@ -1,24 +1,26 @@
 # pj_Umbrella_cop
 project <br/>
 
-## team : 엄브렐라(주)
-## member: <a href="https://github.com/getto-dotted">강덕희(웹서버)</a> , 신재훈(ml, 크롤링)           
+### team : 엄브렐라(주)
+### member: <a href="https://github.com/getto-dotted">강덕희(웹서버)</a> , 신재훈(ml, 크롤링)           
 
-## 개발 언어 및 환경
-python(3.7.4)
-pycharm CE(2019.3.3)
-VScode 1.43.0
+### 개발 언어 및 환경
+python(3.7.4),
+pycharm CE(2019.3.3),
+VScode 1.43.0,
 goormIDE
 
-# 오늘 내일 비가 올지를 예측해서 우산을 챙겨야 하는지를 알려주는 알고리즘
+## 출근전 우산을 챙겨야하나 고민될때 
+
+# 오늘 내일 비가 올지를 예측해서 우산을 챙겨야 하는지를 알려줌
 사용자로부터 주소지의 지역 (시,군)값을 받아와서(Web) 해당지역의 현재,금일,내일까지의 날씨정보를 크롤링 후 
 과거 자료를 토대로 학습된 알고리즘이 우산이 필요한지 아닌지를 알려주는 형태이다.
 
 
-## 선택한 알고리즘 DecisionTreeClassifier
-선택이유 : 어떤 항목에 대한 관측값과 목표값을 연결시켜주는 예측 모델이라 해서 제일 적합하다고 판단
-          다른 알고리즘들에 비해 높은 정확도를 가지고있음 
-지역별 데이터량(지역별 데이터량이 다르지만 평균 8~9천개의 데이터들로 학습됨)
+### 선택한 알고리즘 DecisionTreeClassifier
+선택이유 : 어떤 항목에 대한 관측값과 목표값을 연결시켜주는 예측 모델이라 해서 제일 적합하다고 판단 </br>
+          다른 알고리즘들에 비해 높은 정확도를 가지고있음  </br>
+지역별 데이터량(지역별 데이터량이 다르지만 평균 8~9천개의 데이터들로 학습됨) </br>
 
 학습시 사용한 데이터 :  x = 운량(구름의양 0:맑음 1:흐림으로 처리), 습도, 강수량  y = 강수시간
 결과값
@@ -43,12 +45,12 @@ goormIDE
 
 
 ## 파일 설명
-DIR apis : 크롤링 및 선택적 피클에 필요한 격자값, 지역값 들이 있는 폴더
-DIR train : 알고리즘학습에 필요한 지역별 자료들이 있는 폴더
-run_.py : 교차검증하여 결과출력
-now_sk : 금일 skAPI를 통한 현재 기상상태 출력
-apisdata_craw,  tom : 공공데이터 크롤링 및 학습된 알고리즘 호출하여 결과 출력(today,tomorrow)
-weatheri_today, tom : weatheri웹 데이터 크롤링 및 학습된 알고리즘 호출하여 결과 출력 (today,tom)
+DIR apis : 크롤링 및 선택적 피클에 필요한 격자값, 지역값 들이 있는 폴더 </br>
+DIR train : 알고리즘학습에 필요한 지역별 자료들이 있는 폴더 </br>
+run_.py : 교차검증하여 결과출력 </br>
+now_sk : 금일 skAPI를 통한 현재 기상상태 출력 </br>
+apisdata_craw,  tom : 공공데이터 크롤링 및 학습된 알고리즘 호출하여 결과 출력(today,tomorrow) </br>
+weatheri_today, tom : weatheri웹 데이터 크롤링 및 학습된 알고리즘 호출하여 결과 출력 (today,tom) </br>
 
 ## 실행단계별 설명
 <img width="" height="" src=''>1</img>
