@@ -30,7 +30,7 @@ goormIDE
 과적합 유무를 판단할 수 있는 분별력이 필요함
 통계상 1/3~1/4 정도 
 
-<img width="" height="" src=''>rst_kw</img>
+<img width="" height="" src='https://github.com/ttlevt/pj_Umbrella_cop/blob/master/readme/rst_kw.png'></img>
 
 
 #### 학습 및 크롤링 데이터 출처
@@ -53,25 +53,24 @@ apisdata_craw,  tom : 공공데이터 크롤링 및 학습된 알고리즘 호�
 weatheri_today, tom : weatheri웹 데이터 크롤링 및 학습된 알고리즘 호출하여 결과 출력 (today,tom) </br>
 
 ## 실행단계별 설명
-<img width="" height="" src=''>1</img>
+<img width="" height="" src='https://github.com/ttlevt/pj_Umbrella_cop/blob/master/readme/1.png'></img>
 1. 이종연결된 web서버로부터 지역명을 요청값으로 받아와서 교차검증을하는 함수를 실행시킨다
-<img width="" height="" src=''>2</img>
+<img width="" height="" src='https://github.com/ttlevt/pj_Umbrella_cop/blob/master/readme/2.png'></img>
 2. 각각의 지정된 변수들은 요청값들로 호출되어 알고리즘으로부터 결과값을 받게되고 해당값들을 비교하여 최종적으로 결과를 출력시켜줌
-<img width="" height="" src=''>3</img>
+<img width="" height="" src='https://github.com/ttlevt/pj_Umbrella_cop/blob/master/readme/3.png'></img>
 3. 동명의 도시로 인한 광역시 별도처리 후 csv파일에서 도시명과 크롤링할때 필요한 자료(도시의 격자값 or 위도,경도 등)를 사전형태로 결합
   후 요청값이 사전의 key값 안에 해당되면 value값으로 반환해줌
-<img width="" height="" src=''>4</img>
+<img width="" height="" src='https://github.com/ttlevt/pj_Umbrella_cop/blob/master/readme/4.png'></img>
 4. 반환받은값들로 크롤링실행 후 받아온 자료를 알고리즘을 통해서 학습시킨 후 결과값을 반환하게 한다.
 
 
 ## ML부분
-<img width="" height="" src=''>ml1</img>
+<img width="" height="" src='https://github.com/ttlevt/pj_Umbrella_cop/blob/master/readme/ml1.png'></img>
 1. 알고리즘의 학습에 필요한 엑셀들을 병합후 컬럼들을 뽑아와서 결측치 처리 후 필요한 컬럼 및 자료들로만 이루어진 데이터파일로 재저장
-<img width="" height="" src=''>ml2</img>
-2. 데이터파일 x,y divide, 선택한 알고리즘으로 학습 후 피클로 저장한다.
-<img width="" height="" src=''>ml3</img>
-3. 지역마다 다른 피클명으로 저장한다(ex) kk=경기, cc=충청등)
-<img width="" height="" src=''>ml4</img>
+<img width="" height="" src='https://github.com/ttlevt/pj_Umbrella_cop/blob/master/readme/ml2.png'></img>
+2,3 데이터파일 x,y divide, 선택한 알고리즘으로 학습 후 피클로 저장한다.
+          지역마다 다른 피클명으로 저장한다(ex) kk=경기, cc=충청등)
+<img width="" height="" src='https://github.com/ttlevt/pj_Umbrella_cop/blob/master/readme/ml4.png'></img>
 4. 함수에서 지역명을 요청값으로 받게되면 조건문을통해 해당지역의 데이터로 학습된 모듈이 실행되도록 지정(20.03.18 미완)
 
 
