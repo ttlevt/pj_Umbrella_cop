@@ -52,7 +52,7 @@ pickle.dump(tree, open("weather_kw.pkl", "wb"))
 
 
 
-# print(classification_report(y_test, predict))
+print(classification_report(y_test, predict))
 # --
 # df_merge = pd.DataFrame({'test':y_test , 'predict':predict})
 # print(df_merge)

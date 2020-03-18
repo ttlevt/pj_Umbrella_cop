@@ -6,12 +6,12 @@ def select_pkl(place_name, data_rst):
     import pickle
 # try:
 # print(lc)
-# 가정 시작
+
     tree = pickle.load(open("weather_kk.pkl", "rb"))
     result = tree.predict(data_rst)
     return result
 
-# 가정 끝
+
 '''    
 if place_name in lc['kk'].values:
     from sklearn import tree
