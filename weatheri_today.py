@@ -25,7 +25,7 @@ def wei_getplace(place_name):
             pl2 = place_name+'광역시'
     # 일반시 처리 = 3글자 들어와서 한글자빼야함
     # 울릉도 현재문제=울릉군으로 입력값이 온다는거지
-    if place_name[-1] == '시' or place_name[-1] == '군':
+    if len(place_name)<5 and (place_name[-1] == '시' or place_name[-1] == '군'):
         pl2 = place_name
         place_name = place_name[0:-1]
     # print(place_name)
@@ -124,7 +124,7 @@ def wei_getplace(place_name):
     # tree = pickle.load(open("weather.pkl", "rb"))
     # result = tree.predict(wei_today)
 
-    result = select_pkl(place_name, wei_today)
+    # result = select_pkl(place_name, wei_today)
     result = select_pkl(pl2, wei_today)
     if 1.0 in result:
         # a = 1  # 1 필요  0 불필요
@@ -134,5 +134,5 @@ def wei_getplace(place_name):
 
 
 
-# b =wei_getplace('광주광역시')
+# b =wei_getplace('부산')
 # print(b)
