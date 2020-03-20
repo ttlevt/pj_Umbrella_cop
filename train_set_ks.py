@@ -52,10 +52,10 @@ pickle.dump(tree, open("weather_ks.pkl", "wb"))
 
 
 
-# print(classification_report(y_test, predict))
+print(classification_report(y_test, predict))
 # --
-# df_merge = pd.DataFrame({'test':y_test , 'predict':predict})
-# print(df_merge)
+df_merge = pd.DataFrame({'test':y_test , 'predict':predict})
+print(df_merge)
 
 # print(tree.score(x_test,y_test))
 # 다른 분석모델중 예측률이 높은 모델들과 별 차이없어서 그냥 결정나무 사용

@@ -59,7 +59,7 @@ def now_sk(place_name):
     result = select_pkl(place_name, now_li)
     return int(result)
 
-# a = now_sk('광주시')
+# a = now_sk('대전')
 # print(a)
 
 
