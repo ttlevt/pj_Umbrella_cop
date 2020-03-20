@@ -18,7 +18,7 @@ def home(request):
     # print('req_encoding:::::', request.encoding)
     # print('requeststype:', type(request))
     # print('request!!!!!:', request)
-    place_name = request.GET['name']
+    # place_name = request.GET['name']
     # print('place_name::::::', place_name)
 
 
