@@ -70,7 +70,7 @@ weatheri_today, tom : weatheri웹 데이터 크롤링 및 학습된 알고리즘
 <img width="" height="" src='https://github.com/ttlevt/pj_Umbrella_cop/blob/master/readme/ml2.png'></img>
 2,3 데이터파일 x,y divide, 선택한 알고리즘으로 학습 후 피클로 저장한다.
           지역마다 다른 피클명으로 저장한다(ex) kk=경기, cc=충청등)
-<img width="" height="" src='https://github.com/ttlevt/pj_Umbrella_cop/blob/master/readme/ml4.png'></img>
-4. 함수에서 지역명을 요청값으로 받게되면 조건문을통해 해당지역의 데이터로 학습된 모듈이 실행되도록 지정(20.03.18 미완)
+<img width="" height="" src=''></img>
+4. 함수에서 지역명을 요청값으로 받게되면 조건문을통해 해당지역의 데이터로 학습된 모듈이 실행되도록 지정(20.03.19완성)
 
 
