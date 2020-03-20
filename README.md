@@ -2,9 +2,9 @@
 project <br/>
 
 ### team : 엄브렐라(주)
-### member: <a href="https://github.com/getto-dotted">강덕희(웹서버)</a> , 신재훈(ml, 크롤링)           
+### member: <a href="https://github.com/getto-dotted">강덕희(웹서버&SQL)</a> , 신재훈(ml, 크롤링)           
 
-### 개발 언어 및 환경
+### ML,크롤링 개발 언어 및 환경
 python(3.7.4),
 pycharm CE(2019.3.3),
 VScode 1.43.0,
