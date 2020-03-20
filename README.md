@@ -34,13 +34,14 @@ goormIDE
 
 
 ## 학습 및 크롤링 데이터 출처
-#### 1. 공공데이터 지역별 일간예보(1904~2018) 및 API서비스(금일,명일)
+#### 1. 공공데이터  API서비스(금일,명일)
 <a href="https://data.kma.go.kr/data/rmt/rmtList.do?code=400&pgmNo=570">공공데이터 바로가기</a>  
 #### 2. sk telecom API 현재날씨현황
 <a href="https://developers.sktelecom.com/">sktelecom api 바로가기</a>  
 #### 3. weatheri 지역별 날씨현황
 <a href="https://www.weatheri.co.kr/index.php">sktelecom api 바로가기</a>  
-
+#### 4. 기상청자료개방포털(1904~2018까지의 날씨)
+<a href="https://data.kma.go.kr/data/grnd/selectAsosRltmList.do?pgmNo=36&tabNo=1">기상청 기상자료개방포털 바로가기</a>  
 
 
 
