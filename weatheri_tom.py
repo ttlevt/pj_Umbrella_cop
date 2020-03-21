@@ -6,19 +6,31 @@ from select_pkl import select_pkl
 
 #ex 양평군
 def wei_getplace_tom(place_name):
+    pl2 = ''
+    if place_name == '광주':
+        place_name = '광주광역시'
     if len(place_name) == 7:
         place_name = place_name[0:2]
+        pl2 = place_name
+        # pl2 = select_pkl 사용을위한 지역명변수 시,광역시처리때문에 그냥 조건문에 하나씩 달아야할듯
+        # 세종특별자치시 -> 세종 으로 변경 유일하게 7글자짜리
     if place_name == '울릉군':
         place_name = '울릉도'
+        pl2 = place_name
     # 광역시처리 = 2글자 받아오니까 상관없이 검색해야하네
     if len(place_name) == 2:
-        place_name = place_name
+        if place_name == '독도' or place_name == '서울' or place_name == '세종':
+            place_name = place_name
+            pl2 = place_name
+        else :
+            pl2 = place_name+'광역시'
     # 일반시 처리 = 3글자 들어와서 한글자빼야함
     # 울릉도 현재문제=울릉군으로 입력값이 온다는거지
-    if place_name[-1] == '시' or '군':
+    if place_name[-1] == '시' or place_name[-1] == '군':
+        pl2 = place_name
         place_name = place_name[0:-1]
-    response = requests.get(
-        "https://www.weatheri.co.kr/forecast/forecast01.php?rid=0202040103&k=1&a_name=%EA%B0%80%ED%8F%89")
+
+    response = requests.get("https://www.weatheri.co.kr/forecast/forecast01.php?rid=0202040103&k=1&a_name=%EA%B0%80%ED%8F%89")
     # print(("https://www.weatheri.co.kr/forecast/forecast01.php?&k=1&a_name="+str(place_name)+""))
     assert response.status_code is 200
     dom = BeautifulSoup(response.content, "html.parser", from_encoding='utf-8')
@@ -28,6 +40,9 @@ def wei_getplace_tom(place_name):
     name = []
     for i in a_tag2:
         name.append(i.text)
+    name.pop(147)
+    name.pop(101)
+
     # tag2 = a태그의 88~260까지 즉 모든지역들의 이름이 적힌 링크들을 name리스트에 담음
 
     li = []
@@ -37,15 +52,22 @@ def wei_getplace_tom(place_name):
         tdx2 = str(tdx).split('"')[0]
         # 앞뒤로 잘라서 변동값만 추려낸 값을 li리스트에 담는다
         li.append(tdx2)
+
+    li.pop(147)
+    li.pop(101)
     loc = {name: value for name, value in zip(name, li)}
+    # print('loctest:', loc_t)
     # name리스트의 값(즉 지역명)과 li리스트(지역별링크)를 loc사전으로 묶는다
-    if place_name in loc:
+    if place_name in loc.keys():
         # 입력받은 지역명이 사전에 있을경우 사전의 벨류값을 고정링크 후면에 이어붙여서
         # 입력받은 지역명의 링크로 크롤링할 url을 지정한다
         response = requests.get("https://www.weatheri.co.kr/forecast/forecast01.php?" + str(loc.pop(place_name)) + '')
         assert response.status_code is 200
         dom = BeautifulSoup(response.content, "html.parser", from_encoding='utf-8')
-
+    elif place_name == '광주광역시':
+        response = requests.get('https://www.weatheri.co.kr/forecast/forecast01.php?rid=0901010100&k=7&a_name=%EA%B4%91%EC%A3%BC')
+        dom = BeautifulSoup(response.content, "html.parser", from_encoding='utf-8')
+    # print('rp:', str(loc.pop(place_name)))
     td = dom.select('td')
     # 해당페이지의 td를 선택자로 전부가져온다
 
@@ -96,17 +118,22 @@ def wei_getplace_tom(place_name):
     #     else :
     #         umli.append('0')
     # um = ""
-    a = 0
-    result = select_pkl(place_name, wei_tom)
+    # result = select_pkl(place_name, wei_tom)
+    # print(wei_tom)
+    # print('pl2=', pl2)
+    result = select_pkl(pl2, wei_tom)
 
     if 1.0 in result:
-        a = 1  # 1 필요  0 불필요
+        # a = 1  # 1 필요  0 불필요
+        return 1
     else:
-        a = 0
-    return a
+        return 0
+        # a = 0
+    # return a
 
 
 
 
-# b=wei_getplace_tom('울릉도')
-# print(b)
+# a = wei_getplace_tom('대전')
+# print(a)
+

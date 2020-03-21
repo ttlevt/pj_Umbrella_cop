@@ -50,8 +50,6 @@ tree.score
 import pickle
 pickle.dump(tree, open("weather_cc.pkl", "wb"))
 
-
-
 # print(classification_report(y_test, predict))
 # --
 # df_merge = pd.DataFrame({'test':y_test , 'predict':predict})

@@ -45,7 +45,7 @@ tree.fit(x_train, y_train)
 predict = tree.predict(x_test)
 
 from sklearn.metrics import classification_report
-# print(predict)
+print(predict)
 tree.score
 import pickle
 pickle.dump(tree, open("weather_kk.pkl", "wb"))

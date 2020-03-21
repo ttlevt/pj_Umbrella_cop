@@ -2,7 +2,7 @@
 import pandas as pd
 # plname='b'
 # li = [['a', 'b', 'c', 'd'],['e','f','g','h'],['i','j','k','l']]
-# column = ['kk', 'kaw', 'jeju', 'ks']
+column = ['kk', 'kaw', 'jeju', 'ks']
 # df = pd.DataFrame(li, columns=column)
 # print(df)
 # print(plname)

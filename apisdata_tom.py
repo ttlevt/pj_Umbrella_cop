@@ -105,6 +105,6 @@ def apis_Getplace_tom(place_name):
 # 강수량 14 35 56 76
 # 습도 시작 5 15 26 36 46 57 67 77
 
-# b = apis_Getplace_tom('독도')
+# b = apis_Getplace_tom('대전')
 # print(b)
 #     base_time=2300 # base_time은 작일 2300 or 2330 부터 조회해야 3시데이터부터쭉나온다
