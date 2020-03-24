@@ -5,7 +5,8 @@ from weatheri_today import wei_getplace
 from apisdata_tom import apis_Getplace_tom
 from weatheri_tom import wei_getplace_tom
 from now_sk import now_sk
-#cross_v
+#cross_vali 
+# 검증을 통해서 보다 더 정확한 값을 출력
 def cross_v(place_name):
     # print(place_name)
     val0 = now_sk(place_name)
