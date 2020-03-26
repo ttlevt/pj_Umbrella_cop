@@ -15,6 +15,7 @@ def cross_v(place_name):
     # print('val0:', val0, 'val1:', val1, 'val2:',val2)
     rst_today = ''
     rst_tom = ''
+    # rst를 통한 오늘 내일 결과값 저장변수
     # print('v1+v2=', val1+val2)
     if val0 + val1 + val2 > 0:
         rst_today = "rainy"
