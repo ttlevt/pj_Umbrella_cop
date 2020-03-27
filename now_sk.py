@@ -25,6 +25,7 @@ def now_sk(place_name):
     response = requests.get(url_)
     assert response.status_code is 200
     dom = BeautifulSoup(response.content, "html.parser")
+    # bs4 cl
     zs = str(dom)
     # bs4타입은 json타입으로 변환이 바로 되지 않으므로 str타입으로 다시저장
     json_data = json.loads(zs)
