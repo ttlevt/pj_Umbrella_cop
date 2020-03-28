@@ -38,7 +38,7 @@ def now_sk(place_name):
     # print(jd2['precipitation']['sinceOntime'])
     # 출력을하면 짜잔하고 원하는값이 나온단다 ㅠㅠ
     sky = jd2['sky']['name']
-    #하늘상태 텍스트로 받아오면
+    #하늘상태 텍스트로 받아오면 숫자로 재가공
     if sky == '맑음':
         sky = 0
     else :
