@@ -46,7 +46,7 @@ def now_sk(place_name):
     # 머신러닝 돌릴수 있도록 다시 하늘값 변경해주고
     # etc
     percent = jd2['humidity']
-    # 습도 역시 지정해주고//
+    # 습도 역시 지정해주고///
     mm = jd2['precipitation']['sinceOntime']
     # 강우량 ( 현재 날씨데이터이므로 현재강우량임 )
 
@@ -61,7 +61,7 @@ def now_sk(place_name):
     return int(result)
 
 # a = now_sk('대전')
-# print(a)
+## print(a)
 
 
 
