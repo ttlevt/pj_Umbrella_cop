@@ -82,7 +82,7 @@ def wei_getplace(place_name):
     td_hum = td[370:376]
     # 습도역시 태그와 값을 가져옴
     # 전운량 332~340
-
+    # col값 저장해놓기
     # text값과 이미지태그값들을 가져왔으니 변환해서 새로운 리스트에 담아준다
     pic_li = []
     rain_li = []
