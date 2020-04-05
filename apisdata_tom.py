@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from select_pkl import select_pkl
 
-
+# 주석
 def apis_Getplace_tom(place_name):
     if place_name == '세종특별자치시':
         place_name = place_name[0:2]
